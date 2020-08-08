@@ -32,8 +32,9 @@ bower install
 ## Build
 
 ```sh
-./toPDF.sh
-broccoli build dist
+broccoli build dist 
+./toPDF.sh 
+broccoli serve  # confirm at http://localhost:4200/
 ```
 
 ## License 
