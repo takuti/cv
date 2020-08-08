@@ -1,3 +1,3 @@
 #!/bin/bash
 
-phantomjs toPDF.js 'http://localhost:4200' public/Lucas_Clemente.pdf A4
+phantomjs toPDF.js './dist/index.html' public/Takuya_Kitazawa.pdf A4
