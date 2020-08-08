@@ -1,11 +1,41 @@
-# CV Lucas Clemente #
+# CV Takuya Kitazawa
 
-[See it in action](https://clemente.io)
+Source: [lucas-clemente/cv](https://github.com/lucas-clemente/cv)
 
-I was bored of using Pages / Word / LaTeX to write my CVs, so I tried HTML. It was fun! The PDF version was created using Chrome.
+## Installation
 
-Check out the source and fork it!
+Ensure using node v10 since newer versions cause errors in node-sass:
 
-## License ##
+```sh
+brew uninstall node
+brew install nodebrew
+nodebrew setup
+nodebrew ls-remote
+nodebrew install-binary v10.22.0
+nodebrew use v10.22.0
+```
+
+CLI tools:
+
+```sh
+npm install -g broccoli-cli bower phantomjs
+```
+
+Install modules:
+
+```sh
+npm-check-updates -u
+npm install
+bower install
+```
+
+## Build
+
+```sh
+./toPDF.sh
+broccoli build dist
+```
+
+## License 
 
 [MIT](LICENSE.txt)
