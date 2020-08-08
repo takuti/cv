@@ -1,0 +1,202 @@
+// scss-lint:disable VendorPrefix, LeadingZero, ColorVariable
+
+// $enable-flex: true;
+
+$font-family-sans-serif: 'Source Sans Pro', sans-serif;
+$headings-font-family: 'Open Sans', sans-serif;
+$font-size-root: 15px;
+$line-color: #ddd;
+$grid-gutter-width: 4rem;
+
+@import 'bootstrap_custom';
+
+@import 'fa_custom';
+@import 'fonts';
+
+body {
+  margin-top: 2rem;
+}
+
+h1 {
+  font-weight: 300;
+  margin-bottom: 0;
+  margin-top: 0.8em;
+  padding-bottom: 1rem;
+}
+
+.header-line {
+  animation: 0.5s ease-in 0s grow;
+
+  border-bottom: 1px solid $line-color;
+  margin-bottom: 2.5rem;
+}
+
+@keyframes grow {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+h2 {
+  font-family: $headings-font-family;
+  font-size: 1.3em;
+  font-weight: 400;
+}
+
+aside h2 {
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+}
+
+footer {
+  font-size: $font-size-sm;
+  margin-top: 2em;
+}
+
+// Don't show vertical line on phones
+@mixin show-line {
+  aside {
+    border-left: 1px solid $line-color;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  @include show-line;
+}
+
+@media print {
+  @include show-line;
+}
+
+dt {
+  font-family: $headings-font-family;
+  font-weight: 400;
+}
+
+dd {
+  margin-bottom: 1em;
+  margin-left: 10px;
+}
+
+.publication-list {
+  font-size: $font-size-sm;
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
+  li {
+    line-height: 1.8em;
+    margin-bottom: 10px;
+  }
+}
+
+section {
+  $duration-width: 7.1rem;
+  $duration-padding: 0.4rem;
+
+  margin-bottom: 2rem;
+  padding-left: $duration-width + $duration-padding;
+  padding-top: 1em;
+  position: relative;
+
+  .duration {
+    font-size: $font-size-sm;
+    margin-left: -$duration-width - $duration-padding;
+    margin-top: 0.2em;
+    padding-right: $duration-padding;
+    position: absolute;
+    width: $duration-width;
+  }
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+
+  .location {
+    font-family: $headings-font-family;
+  }
+
+  .labels {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+  }
+
+  $color-default:     lighten($label-default-bg, 20%);
+  $color-cpp:         #045088;
+  $color-ember:       #f23818;
+  $color-rails:       #c00;
+  $color-go:          darken(#90e4e6, 20%);
+  $color-mathematica: #f4792f;
+  $color-python:      darken(#ffe260, 25%);
+
+  @mixin label($color) {
+    @include label-variant($color-default);
+    &:hover {
+      background-color: $color;
+      transition: all 0.1s ease-in-out;
+    }
+  }
+
+  .label-cpp {
+    @include label($color-cpp);
+  }
+
+  .label-ember {
+    @include label($color-ember);
+  }
+
+  .label-rails {
+    @include label($color-rails);
+  }
+
+  .label-go {
+    @include label($color-go);
+  }
+
+  .label-mathematica {
+    @include label($color-mathematica);
+  }
+
+  .label-python {
+    @include label($color-python);
+  }
+}
+
+.fa-li {
+  // fixes a weird alignment issue
+  // TODO improve
+  line-height: 1.3;
+}
+
+@media print {
+  html {
+    font-size: 7px;
+  }
+
+  body {
+    margin-top: 0;
+    -webkit-print-color-adjust: exact;
+    text-rendering: optimizeLegibility;
+  }
+
+  article {
+    font-size: 8px;
+  }
+
+  .label {
+    border: 0;
+    line-height: 1.2;
+  }
+
+  .hello {
+    display: none;
+  }
+
+  section {
+    margin-bottom: 1rem;
+  }
+}
