@@ -22,7 +22,7 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 CLI tools:
 
 ```sh
-npm install -g broccoli-cli bower phantomjs
+npm install -g broccoli-cli bower phantomjs npm-check-updates
 ```
 
 Install modules:
