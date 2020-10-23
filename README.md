@@ -15,6 +15,10 @@ nodebrew install-binary v10.22.0
 nodebrew use v10.22.0
 ```
 
+```sh
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+```
+
 CLI tools:
 
 ```sh
