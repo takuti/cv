@@ -8,21 +8,16 @@ Ensure using node v10 since newer versions cause errors in node-sass:
 
 ```sh
 brew uninstall node
-brew install nodebrew
-nodebrew setup
-nodebrew ls-remote
-nodebrew install-binary v10.22.0
-nodebrew use v10.22.0
+brew install nodenv # follow `nodenv init`
+nodenv install 10.22.0
+nodenv local 10.22.0
 ```
-
-```sh
-export PATH=$HOME/.nodebrew/current/bin:$PATH
 ```
 
 CLI tools:
 
 ```sh
-npm install -g broccoli-cli bower phantomjs npm-check-updates
+npm install -g broccoli-cli bower phantomjs-prebuilt npm-check-updates
 ```
 
 Install modules:
