@@ -9,9 +9,8 @@ Ensure using node v10 since newer versions cause errors in node-sass:
 ```sh
 brew uninstall node
 brew install nodenv # follow `nodenv init`
-nodenv install 10.22.0
-nodenv local 10.22.0
-```
+nodenv install
+nodenv rehash
 ```
 
 CLI tools:
