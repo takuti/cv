@@ -15,7 +15,7 @@
   "devDependencies": {
     "broccoli": "^3.5.2",
     "broccoli-bower": "^0.2.1",
-    "broccoli-funnel": "^3.0.5",
+    "broccoli-funnel": "^3.0.8",
     "broccoli-merge-trees": "^4.2.0",
     "broccoli-sass": "^0.7.0"
   }
