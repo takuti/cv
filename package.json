@@ -1,17 +1,9 @@
 {
   "name": "CV",
-  "version": "0.0.0",
-  "description": "https://clemente.io",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/lucas-clemente/cv.git"
-  },
-  "author": "Lucas Clemente",
+  "version": "0.0.1",
+  "description": "Clone of https://github.com/lucas-clemente/cv",
+  "author": "takuti",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/lucas-clemente/cv/issues"
-  },
-  "homepage": "https://github.com/lucas-clemente/cv",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",
     "bootstrap": "^4.0.0-alpha.2"
