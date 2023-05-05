@@ -8,9 +8,8 @@ $font-size-root: 15px;
 $line-color: #ddd;
 $grid-gutter-width: 4rem;
 
-@import 'bootstrap_custom';
-
-@import 'fa_custom';
+@import 'bootstrap';
+@import 'fontawesome';
 @import 'fonts';
 
 body {

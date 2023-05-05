@@ -6,7 +6,7 @@ const del = require('del');
 const cleanContent = () => del(['dist/**/*']);
 
 const compileSass = () =>
-    src(['./styles/app.scss'])
+    src(['./scss/app.scss'])
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(dest("dist/"));
 
@@ -28,7 +28,7 @@ const serve = () => {
         open: true,
     });
 
-    watch('styles/**/*', compileSass);
+    watch('scss/**/*', compileSass);
     watch('public/**/*', copyStaticFiles);
 };
 
