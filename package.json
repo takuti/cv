@@ -12,11 +12,8 @@
     "url": "https://github.com/lucas-clemente/cv/issues"
   },
   "homepage": "https://github.com/lucas-clemente/cv",
-  "devDependencies": {
-    "broccoli": "^3.5.2",
-    "broccoli-bower": "^0.2.1",
-    "broccoli-funnel": "^3.0.8",
-    "broccoli-merge-trees": "^4.2.0",
-    "broccoli-sass": "^0.7.0"
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "bootstrap": "^4.0.0-alpha.2"
   }
 }
