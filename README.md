@@ -5,15 +5,15 @@ Source: [lucas-clemente/cv](https://github.com/lucas-clemente/cv)
 ## Installation
 
 ```sh
-npm install -g gulp-cli phantomjs-prebuilt
+npm install -g gulp-cli
 npm install
+npm run prepare
 ```
 
 ## Build
 
 ```sh
 npm run build
-./toPDF.sh
 ```
 
 Watch on the browser:
