@@ -4,37 +4,24 @@ Source: [lucas-clemente/cv](https://github.com/lucas-clemente/cv)
 
 ## Installation
 
-Ensure using node v10 since newer versions cause errors in node-sass:
-
 ```sh
-brew uninstall node
-brew install nodenv # follow `nodenv init`
-nodenv install
-nodenv rehash
-```
-
-CLI tools:
-
-```sh
-npm install -g broccoli-cli bower phantomjs-prebuilt npm-check-updates
-```
-
-Install modules:
-
-```sh
-npm-check-updates -u
+npm install -g gulp-cli phantomjs-prebuilt
 npm install
-bower install
 ```
 
 ## Build
 
 ```sh
-broccoli build dist 
-./toPDF.sh 
-broccoli serve  # confirm at http://localhost:4200/
+npm run build
+./toPDF.sh
 ```
 
-## License 
+Watch on the browser:
+
+```sh
+npm run watch
+```
+
+## License
 
 [MIT](LICENSE.txt)

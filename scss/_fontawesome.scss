@@ -1,0 +1,135 @@
+$fa-font-path: 'fonts/fontawesome';
+
+@import "node_modules/@fortawesome/fontawesome-free/scss/_functions";
+@import "node_modules/@fortawesome/fontawesome-free/scss/_variables";
+@import "node_modules/@fortawesome/fontawesome-free/scss/_mixins";
+
+// @import "node_modules/@fortawesome/fontawesome-free/scss/_path";
+
+:root, :host {
+  --#{$fa-css-prefix}-style-family-classic: '#{ $fa-style-family }';
+  --#{$fa-css-prefix}-font-regular: normal 400 1em/1 '#{ $fa-style-family }';
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$fa-font-path}/fa-regular-400.woff2') format('woff2'),
+    url('#{$fa-font-path}/fa-regular-400.ttf') format('truetype');
+}
+
+.far,
+.#{$fa-css-prefix}-regular {
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 900;
+  src: url('#{$fa-font-path}/fa-solid-900.woff2') format('woff2'),
+    url('#{$fa-font-path}/fa-solid-900.ttf') format('truetype');
+}
+
+.fas,
+.#{$fa-css-prefix}-solid {
+  font-weight: 900;
+}
+
+:root, :host {
+  --#{$fa-css-prefix}-style-family-brands: 'Font Awesome 6 Brands';
+  --#{$fa-css-prefix}-font-brands: normal 400 1em/1 'Font Awesome 6 Brands';
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Brands';
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$fa-font-path}/fa-brands-400.woff2') format('woff2'),
+    url('#{$fa-font-path}/fa-brands-400.ttf') format('truetype');
+}
+
+.fab,
+.#{$fa-css-prefix}-brands {
+  font-weight: 400;
+}
+
+@each $name, $icon in $fa-brand-icons {
+  .#{$fa-css-prefix}-#{$name}:before { content: unquote("\"#{ $icon }\""); }
+}
+
+// NOTE: phamtom.js (PDF generator) doesn't work with CSS's `var` and `calc`,
+// so some impacted elements are directly redefined here:
+// https://stackoverflow.com/questions/47722907/phantomjs-browser-incorrectly-computing-css-calc-function-in-nightwatch-tests
+
+// @import "node_modules/@fortawesome/fontawesome-free/scss/_core";
+// == _core BEGIN ==
+.#{$fa-css-prefix} {
+  font-family: $fa-style-family;
+  font-weight: $fa-style;
+}
+
+.#{$fa-css-prefix},
+.#{$fa-css-prefix}-classic,
+.#{$fa-css-prefix}-sharp,
+.fas,
+.#{$fa-css-prefix}-solid,
+.far,
+.#{$fa-css-prefix}-regular,
+.fab,
+.#{$fa-css-prefix}-brands {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: $fa-display;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+}
+
+.fas,
+.#{$fa-css-prefix}-classic,
+.#{$fa-css-prefix}-solid,
+.far,
+.#{$fa-css-prefix}-regular {
+  font-family: 'Font Awesome 6 Free';
+}
+
+.fab,
+.#{$fa-css-prefix}-brands {
+  font-family: 'Font Awesome 6 Brands';
+}
+
+%fa-icon {
+  @include fa-icon;
+}
+// == _core END ==
+
+// @import "node_modules/@fortawesome/fontawesome-free/scss/_larger";
+// @import "node_modules/@fortawesome/fontawesome-free/scss/_fixed-width";
+
+// @import "node_modules/@fortawesome/fontawesome-free/scss/_list";
+// == _list BEGIN ==
+.#{$fa-css-prefix}-ul {
+  list-style-type: none;
+  margin-left: $fa-li-margin;
+  padding-left: 0;
+
+  > li { position: relative; }
+}
+.#{$fa-css-prefix}-li {
+  left: -1 * $fa-li-width;
+  position: absolute;
+  text-align: center;
+  width: $fa-li-width;
+  line-height: inherit;
+}
+// == _list END ==
+
+// @import "node_modules/@fortawesome/fontawesome-free/scss/_bordered-pulled";
+// @import "node_modules/@fortawesome/fontawesome-free/scss/_animated";
+// @import "node_modules/@fortawesome/fontawesome-free/scss/_rotated-flipped";
+// @import "node_modules/@fortawesome/fontawesome-free/scss/_stacked";
+@import "node_modules/@fortawesome/fontawesome-free/scss/_icons";
+@import "node_modules/@fortawesome/fontawesome-free/scss/_shims";
