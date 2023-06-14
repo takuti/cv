@@ -25,8 +25,7 @@
   },
   "lint-staged": {
     "public/**/*.{html,css}": [
-      "./toPDF.sh",
-      "git add public/Takuya_Kitazawa.pdf"
+      "./toPDF.sh"
     ]
   }
 }
