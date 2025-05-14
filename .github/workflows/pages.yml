@@ -39,6 +39,7 @@ jobs:
 
       - name: Build CV
         run: |
+          export OPENSSL_CONF=/dev/null
           npm install
           npm run build
           ls -al ./public
