@@ -129,37 +129,23 @@ section {
     margin: 0.5rem 0;
   }
 
-  $color-default:     lighten($label-default-bg, 20%);
-  $color-cpp:         #045088;
-  $color-ember:       #f23818;
-  $color-rails:       #c00;
-  $color-go:          darken(#90e4e6, 20%);
-  $color-mathematica: #f4792f;
-  $color-python:      darken(#ffe260, 25%);
+  $color-default:     $label-default-bg;
 
   @mixin label($color) {
     @include label-variant($color-default);
     &:hover {
-      background-color: $color;
+      background-color: #045088;
       transition: all 0.1s ease-in-out;
     }
   }
 
-  .label-domain {
-    @include label($color-cpp);
+  .label {
+    @include label($color-default);
   }
+}
 
-  .label-framework {
-    @include label($color-rails);
-  }
-
-  .label-platform {
-    @include label($color-go);
-  }
-
-  .label-language {
-    @include label($color-python);
-  }
+#more {
+  display: none;
 }
 
 @media print {
@@ -188,5 +174,9 @@ section {
 
   section {
     margin-bottom: 1rem;
+  }
+
+  #more {
+    display: inline;
   }
 }
