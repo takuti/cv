@@ -455,12 +455,12 @@
       const moreText = document.getElementById("more");
       const btnText = document.getElementById("moreBtn");
 
-      if (moreText.style.display === "none") {
-        btnText.innerHTML = "&#x25B2; Show less";
-        moreText.style.display = "inline";
-      } else {
+      if (moreText.classList.contains("show")) {
         btnText.innerHTML = "&#x25BC; Show more";
-        moreText.style.display = "none";
+        moreText.classList.remove("show");
+      } else {
+        btnText.innerHTML = "&#x25B2; Show less";
+        moreText.classList.add("show");
       }
     }
   </script>

@@ -1,22 +1,4 @@
+// Import Inter from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
 $fa-font-path: 'fonts';
-
-@font-face {
-  font-family: 'Open Sans';
-  font-weight: 300;
-  font-style: normal;
-  src: url('#{$fa-font-path}/Open-Sans-300.woff');
-}
-
-@font-face {
-  font-family: 'Open Sans';
-  font-weight: 400;
-  font-style: normal;
-  src: url('#{$fa-font-path}/Open-Sans-regular.woff');
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-weight: 400;
-  font-style: normal;
-  src: url('#{$fa-font-path}/Source-Sans-Pro-regular.woff');
-}

@@ -1,182 +1,460 @@
 // scss-lint:disable VendorPrefix, LeadingZero, ColorVariable
 
-// $enable-flex: true;
+// ====================================
+// VARIABLES
+// ====================================
 
-$font-family-sans-serif: 'Source Sans Pro', sans-serif;
-$headings-font-family: 'Open Sans', sans-serif;
+// Typography
+$font-family-base: 'Inter', system-ui, sans-serif;  
+$font-family-sans-serif: $font-family-base;
+$headings-font-family: $font-family-base;
 $font-size-root: 15px;
-$line-color: #ddd;
-$grid-gutter-width: 4rem;
 
-@import 'bootstrap';
-@import 'fontawesome';
-@import 'fonts';
+// Font scale - Simplified for consistency
+$font-sizes: (
+  xl: 2.5rem,     // H1
+  lg: 1.5rem,     // H2 main sections  
+  md: 1.25rem,    // H2 job titles
+  base: 0.9rem,   // Body text
+  sm: 0.8rem      // Labels, duration
+);
 
-body {
-  margin-top: 2rem;
-}
+// Extract individual font sizes
+$font-size-xl: map-get($font-sizes, xl);
+$font-size-lg: map-get($font-sizes, lg);
+$font-size-md: map-get($font-sizes, md);
+$font-size-base: map-get($font-sizes, base);
+$font-size-sm: map-get($font-sizes, sm);
 
-h1 {
-  font-weight: 300;
-  margin-bottom: 0;
-  margin-top: 0.8em;
-  padding-bottom: 1rem;
-}
+// Color palette
+$colors: (
+  line: #e5e7eb,
+  text: #374151,
+  text-muted: #6b7280,
+  text-light: #9ca3af,
+  accent: #1e40af,
+  footer: #6c757d
+);
 
-ul {
-  padding-left: 2em;
-}
+// Extract individual colors  
+$line-color: map-get($colors, line);
+$text-color: map-get($colors, text);
+$text-muted: map-get($colors, text-muted);
+$text-light: map-get($colors, text-light);
+$accent-color: map-get($colors, accent);
+$footer-color: map-get($colors, footer);
 
-.header-line {
-  animation: 0.5s ease-in 0s grow;
+// Layout constants
+$layout: (
+  grid-gutter: 4rem,
+  section-spacing: 2.25rem,
+  cv-max-width: 960px,
+  cv-article-max-width: 70ch,
+  duration-width: 8.5rem,
+  duration-padding: 0.5rem
+);
 
-  border-bottom: 1px solid $line-color;
-  margin-bottom: 2.5rem;
-}
+// Extract layout values
+$grid-gutter-width: map-get($layout, grid-gutter);
+$section-spacing: map-get($layout, section-spacing);
+$cv-max-width: map-get($layout, cv-max-width);
+$cv-article-max-width: map-get($layout, cv-article-max-width);
+$duration-width: map-get($layout, duration-width);
+$duration-padding: map-get($layout, duration-padding);
 
-@keyframes grow {
-  from {
-    width: 0%;
-  }
+// ====================================
+// MIXINS & FUNCTIONS
+// ====================================
 
-  to {
-    width: 100%;
-  }
-}
-
-h2 {
+// Typography mixin for consistent heading styles
+@mixin heading-base($size, $weight: 600, $margin-top: 0, $margin-bottom: 0.75rem) {
   font-family: $headings-font-family;
-  font-size: 1.3em;
-  font-weight: 400;
+  font-size: $size;
+  font-weight: $weight;
+  color: $text-color;
+  margin: $margin-top 0 $margin-bottom 0;
+  line-height: 1.3;
 }
 
-aside h2 {
-  margin-bottom: 1.5rem;
-  margin-top: 2rem;
-}
-
-footer {
-  font-size: $font-size-sm;
-  margin-top: 2em;
-}
-
-// Don't show vertical line on phones
+// Responsive sidebar line
 @mixin show-line {
   aside {
     border-left: 1px solid $line-color;
   }
 }
 
-@include media-breakpoint-up(sm) {
-  @include show-line;
+// ====================================
+// IMPORTS
+// ====================================
+
+@import 'bootstrap';
+@import 'fontawesome';  
+@import 'fonts';
+
+// ====================================
+// BASE STYLES
+// ====================================
+
+.container {
+  @media (min-width: 992px) {
+    max-width: $cv-max-width;
+  }
 }
 
-@media print {
-  @include show-line;
+body {
+  margin-top: 2rem;
+  color: $text-color;
+  line-height: 1.65;
+  font-weight: 400;
+  font-feature-settings: "kern" 1, "liga" 1;
 }
 
+article {
+  max-width: $cv-article-max-width;
+}
+
+ul {
+  padding-left: 2em;
+}
+
+// ====================================
+// TYPOGRAPHY
+// ====================================
+
+h1 {
+  @include heading-base($font-size-xl, 600, 0, 0.75rem);
+  padding-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+h2 {
+  @include heading-base($font-size-lg, 700, 0.75rem, 0.75rem);
+  letter-spacing: -0.02em;
+}
+
+aside h2 {
+  @include heading-base($font-size-md, 600, 2.5rem, 1rem);
+  letter-spacing: -0.015em;
+}
+
+// Definition lists
 dt {
   font-family: $headings-font-family;
   font-weight: 400;
 }
 
 dd {
-  margin-bottom: 1em;
-  margin-left: 10px;
+  margin: 0 0 1em 10px;
 }
 
-.publication-list {
+// ====================================
+// INTERACTIVE ELEMENTS
+// ====================================
+
+a {
+  color: $accent-color;
+  text-decoration: underline;
+  text-decoration-color: rgba($accent-color, 0.4);
+  text-underline-offset: 2px;
+  transition: all 0.2s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: darken($accent-color, 15%);
+    text-decoration-color: darken($accent-color, 15%);
+  }
+}
+
+.btn a,
+a.btn {
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+// Show more button  
+#moreBtn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  margin: 1.5rem 0;
   font-size: $font-size-sm;
-  -ms-hyphens: auto;
-  -webkit-hyphens: auto;
+  font-weight: 500;
+  color: $accent-color;
+  background: rgba($accent-color, 0.04);
+  border: 1px solid rgba($accent-color, 0.2);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  
+  &:hover {
+    background: rgba($accent-color, 0.08);
+    border-color: rgba($accent-color, 0.3);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+}
+
+// ====================================
+// HEADER & ANIMATIONS
+// ====================================
+
+.header-line {
+  animation: 0.7s ease-out 0s grow;
+  border-bottom: 1px solid $line-color;
+  margin-bottom: 2.5rem;
+
+  &::after {
+    content: '';
+  }
+}
+
+@keyframes grow {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+// ====================================
+// COMPONENTS
+// ====================================
+
+// Elevator pitch
+.header-line + p .fa-ul {
+  background: linear-gradient(135deg, rgba($accent-color, 0.04) 0%, rgba($accent-color, 0.01) 100%);
+  border-left: 4px solid $accent-color;
+  border-radius: 0.5rem;
+  padding: 1.5rem 2rem 1.5rem 2.5rem;
+  margin: 1.5rem 0 2rem 0;
+  font-size: $font-size-base;
+  line-height: 1.8;
+  box-shadow: 0 2px 8px rgba($accent-color, 0.06);
+
+  li {
+    margin-bottom: 1.25rem;
+    font-weight: 500;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    i.fa-li {
+      color: $accent-color;
+      font-size: 0.85em;
+      top: 0.2em;
+      opacity: 0.9;
+    }
+  }
+}
+
+// Publications
+.publication-list {
+  font-size: $font-size-base;
   hyphens: auto;
 
   li {
-    line-height: 1.8em;
-    margin-bottom: 10px;
-  }
-}
-
-section {
-  $duration-width: 7.1rem;
-  $duration-padding: 0.4rem;
-
-  margin-bottom: 2rem;
-  padding-left: $duration-width + $duration-padding;
-  padding-top: 1em;
-  position: relative;
-
-  .duration {
-    font-size: $font-size-sm;
-    margin-left: -$duration-width - $duration-padding;
-    margin-top: 0.2em;
-    padding-right: $duration-padding;
-    position: absolute;
-    width: $duration-width;
+    line-height: 1.7em;
+    margin-bottom: 1rem;
   }
 
   p {
-    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: $text-color;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+// Work sections
+section {
+  margin-bottom: $section-spacing;
+  padding-left: $duration-width + $duration-padding;
+  padding-top: 0.75rem;
+  position: relative;
+
+  h2 {
+    @include heading-base($font-size-md, 600, 0, 0.4rem);
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    font-size: $font-size-base;
+  }
+
+  .duration {
+    position: absolute;
+    left: 0;
+    margin-top: 0.3em;
+    width: $duration-width;
+    padding-right: $duration-padding;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $text-muted;
+    white-space: nowrap;
+    letter-spacing: 0.025em;
   }
 
   .location {
     font-family: $headings-font-family;
+    color: $text-muted;
+    font-size: $font-size-base;
+    font-weight: 500;
+    margin: 0.2rem 0 0.75rem 0;
   }
 
   .labels {
     display: block;
-    font-size: 1rem;
-    margin: 0.5rem 0;
-  }
-
-  $color-default:     $label-default-bg;
-
-  @mixin label($color) {
-    @include label-variant($color-default);
-    &:hover {
-      background-color: #045088;
-      transition: all 0.1s ease-in-out;
-    }
+    margin: 1rem 0 0.75rem 0;
   }
 
   .label {
-    @include label($color-default);
+    display: inline-block;
+    padding: 0.4em 0.8em;
+    margin: 0.2em 0;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    line-height: 1.1;
+    color: darken($text-muted, 15%);
+    background-color: lighten($text-muted, 45%);
+    border: none;
+    border-radius: 0.35rem;
+    letter-spacing: 0.02em;
+  }
+
+  .description {
+    margin-bottom: 1rem;
+
+    ul {
+      margin: 0.75rem 0 1rem 0;
+
+      li {
+        margin-bottom: 0.75rem;
+        line-height: 1.7;
+        padding-left: 0.25rem;
+      }
+    }
   }
 }
 
-#more {
-  display: none;
+// ====================================
+// LAYOUT & UTILITIES  
+// ====================================
+
+@include media-breakpoint-up(sm) {
+  @include show-line;
 }
 
+footer {
+  font-size: $font-size-base;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $line-color;
+  color: $footer-color;
+}
+
+// Show more functionality
+#more {
+  display: block;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.8s ease-out, opacity 0.5s ease-out;
+  
+  &.show {
+    max-height: 2000px;
+    opacity: 1;
+  }
+}
+
+// ====================================
+// PRINT STYLES
+// ====================================
+
 @media print {
+  @include show-line;
+
   html {
-    font-size: 7px;
+    font-size: 9px;
   }
 
   body {
     margin-top: 0;
     -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
     text-rendering: optimizeLegibility;
+    line-height: 1.6;
   }
 
-  article {
-    font-size: 8px;
+  // Layout
+  article, aside {
+    font-size: 10px;
+    max-width: none;
   }
 
+  // Typography hierarchy
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  // Content
+  p, li, ul, .fa-ul, .publication-list {
+    font-size: $font-size-base;
+  }
+
+  .label, .duration {
+    font-size: $font-size-sm;
+  }
+
+  section {
+    margin-bottom: 1.25rem;
+    font-size: $font-size-base;
+  }
+
+  // Reset inheritance
+  * {
+    font-size: inherit;
+  }
+
+  // Component overrides
   .label {
-    border: 0;
-    line-height: 1.2;
+    font-size: $font-size-sm !important;
+    font-weight: 600 !important;
+    border: none !important;
+    line-height: 1.1 !important;
+    background-color: lighten($text-muted, 40%) !important;
+    color: darken($text-muted, 20%) !important;
+    padding: 0.3em 0.6em !important;
   }
 
+  .duration {
+    font-size: $font-size-sm !important;
+  }
+
+  // Utilities
   .hello {
     display: none;
   }
 
-  section {
-    margin-bottom: 1rem;
-  }
-
   #more {
-    display: inline;
+    display: block !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+  }
+  
+  #moreBtn {
+    display: none !important;
   }
 }
