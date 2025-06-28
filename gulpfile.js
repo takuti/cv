@@ -6,7 +6,11 @@ const destDir = 'public/'
 
 const compileSass = () =>
     src(['./scss/app.scss'])
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sass({
+            outputStyle: 'compressed',
+            quietDeps: true,
+            silenceDeprecations: ['slash-div']
+        }).on('error', sass.logError))
         .pipe(dest(destDir));
 
 const serve = () => {
