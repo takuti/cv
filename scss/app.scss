@@ -374,6 +374,35 @@ footer {
   }
 }
 
+// Mobile-specific adjustments for show more content
+@media (max-width: 512px) {
+  #more {
+    &.show {
+      max-height: none;
+      height: auto;
+      overflow: visible;
+    }
+  }
+
+  // Ensure sections have proper spacing on mobile
+  section {
+    margin-bottom: $section-spacing * 0.8;
+    padding-left: 0;
+
+    .duration {
+      position: static;
+      display: block;
+      width: auto;
+      margin-bottom: 0.5rem;
+      padding-right: 0;
+    }
+
+    h2 {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
 // ====================================
 // PRINT STYLES
 // ====================================
