@@ -368,7 +368,15 @@ footer {
 }
 
 // Mobile-specific adjustments for show more content
-@media (max-width: 512px) {
+@media (max-width: 543px) {
+  .pull-xs-right {
+    float: none !important;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
   #more {
     &.show {
       max-height: none;
