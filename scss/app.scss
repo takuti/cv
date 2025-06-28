@@ -5,7 +5,7 @@
 // ====================================
 
 // Typography
-$font-family-base: 'Inter', system-ui, sans-serif;  
+$font-family-base: 'Inter', system-ui, sans-serif;
 $font-family-sans-serif: $font-family-base;
 $headings-font-family: $font-family-base;
 $font-size-root: 15px;
@@ -13,7 +13,7 @@ $font-size-root: 15px;
 // Font scale - Simplified for consistency
 $font-sizes: (
   xl: 2.5rem,     // H1
-  lg: 1.5rem,     // H2 main sections  
+  lg: 1.5rem,     // H2 main sections
   md: 1.25rem,    // H2 job titles
   base: 0.9rem,   // Body text
   sm: 0.8rem      // Labels, duration
@@ -36,7 +36,7 @@ $colors: (
   footer: #6c757d
 );
 
-// Extract individual colors  
+// Extract individual colors
 $line-color: map-get($colors, line);
 $text-color: map-get($colors, text);
 $text-muted: map-get($colors, text-muted);
@@ -88,7 +88,7 @@ $duration-padding: map-get($layout, duration-padding);
 // ====================================
 
 @import 'bootstrap';
-@import 'fontawesome';  
+@import 'fontawesome';
 @import 'fonts';
 
 // ====================================
@@ -176,7 +176,7 @@ a.btn {
   }
 }
 
-// Show more button  
+// Show more button
 #moreBtn {
   display: inline-block;
   padding: 0.6rem 1.2rem;
@@ -190,7 +190,7 @@ a.btn {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  
+
   &:hover {
     background: rgba($accent-color, 0.08);
     border-color: rgba($accent-color, 0.3);
@@ -345,7 +345,7 @@ section {
 }
 
 // ====================================
-// LAYOUT & UTILITIES  
+// LAYOUT & UTILITIES
 // ====================================
 
 @include media-breakpoint-up(sm) {
@@ -367,9 +367,9 @@ footer {
   opacity: 0;
   overflow: hidden;
   transition: max-height 0.8s ease-out, opacity 0.5s ease-out;
-  
+
   &.show {
-    max-height: 2000px;
+    max-height: none;
     opacity: 1;
   }
 }
@@ -453,7 +453,7 @@ footer {
     opacity: 1 !important;
     overflow: visible !important;
   }
-  
+
   #moreBtn {
     display: none !important;
   }
